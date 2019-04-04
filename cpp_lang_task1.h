@@ -2,6 +2,7 @@
 #define CPP_LANG_TASK1_H
 
 #include <iostream>
+#include <cstring>
 
 namespace Student {
 
@@ -39,6 +40,34 @@ public:
 
     string substr(unsigned int pos = 0, unsigned int count = npos);
 
+};
+
+template <typename T>
+class vector {
+private:
+    T* _data;
+    unsigned int _size;
+public:
+    ~vector();
+
+    vector();
+    vector(const vector& other);
+    vector(vector&& other);
+    explicit vector(unsigned int count, const T& val = T());
+    explicit vector(unsigned int count);
+
+    T& operator[](unsigned int pos);
+    const T& operator[](unsigned int pos) const;
+    T* data();
+    const T* data() const;
+
+    bool empty() const;
+
+    void clear();
+    void push_back(const T& value);
+    void push_back(T&& value);
+    void pop_back();
+    void insert(unsigned int pos, unsigned int count, const T& value);
 };
 
 }
