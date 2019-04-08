@@ -79,9 +79,9 @@ const char& string::operator[](unsigned int pos) const {
 const char* string::data() const {
     return this->_data;
 }
-/* Returns false if string is empty */
+/* Returns true if string is empty */
 bool string::empty() {
-    return static_cast<bool>(_size);
+    return _size == 0;
 }
 
 /* Returns length of the string */
@@ -199,7 +199,7 @@ const T* vector<T>::data() const {
 /* Returns true if vector is empty */
 template <typename T>
 bool vector<T>::empty() const {
-    return static_cast<bool>(_size);
+    return _size == 0;
 }
 
 //
