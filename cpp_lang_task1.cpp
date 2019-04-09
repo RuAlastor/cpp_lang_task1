@@ -245,6 +245,64 @@ void vector<T>::insert(unsigned int pos, unsigned int count, const T &value) {
     _data = buffer;
 }
 
+void print_number_table(short col, short row) {
+    int** main_table = new int*[row];
+    for (short i = 0; i < row; i++) {
+        main_table[i] = new int[col];
+    }
+    srand(1000);
+    print_stars(col);
+    for (int i = 0; i < col; i++) {
+        short mt_digits = 0;
+        std::cout << '|';
+        for (int j = 0; j < row; j++) {
+            main_table[i][j] = rand() % 200;
+            mt_digits = (main_table[i][j] / 100 != 0 ? 3 : (main_table[i][j] / 10 != 0 ? 2 : 1));
+            print_element(main_table[i][j], mt_digits);
+        }
+        std::cout << "\n";
+        if (i != col - 1) {
+            print_div(row);
+        }
+    }
+    print_stars(col);
+
+    for (short i = 0; i < row; i++) {
+        delete [] main_table[i];
+    }
+    delete [] main_table;
+}
+void print_element(const int &val, short amount_of_digits) {
+    switch (amount_of_digits) {
+    case 1:
+        std::cout << std::setw(3) << val << std::setw(3) << '|';
+        break;
+    case 2:
+        std::cout << std::setw(4) << val << std::setw(2) << '|';
+        break;
+    case 3:
+        std::cout << std::setw(4) << val << std::setw(2) << '|';
+        break;
+    default:
+
+        break;
+    }
+}
+void print_div(short row) {
+    std::cout << '|';
+    for (int i = 0; i < row; i++) {
+        std::cout << std::setw(3) << '+' << std::setw(3) << '|';
+    }
+    std::cout << '\n';
+}
+
+void print_stars(short col) {
+    std::cout << std::setw(4) << '*';
+    for (int i = 1; i < col; i++) {
+        std::cout << std::setw(3) << '*' << std::setw(3) << '*';
+    }
+    std::cout << '\n';
+}
 
 /* magic */
 template class vector<int>;

@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <cstring>
+#include <iomanip>
 
 namespace Student {
 
@@ -72,4 +73,8 @@ public:
 
 }
 
+void print_number_table (short col, short row);
+void print_element(const int& val, short amount_of_digits);
+void print_div(short row);
+void print_stars(short col);
 #endif // CPP_LANG_TASK1_H
